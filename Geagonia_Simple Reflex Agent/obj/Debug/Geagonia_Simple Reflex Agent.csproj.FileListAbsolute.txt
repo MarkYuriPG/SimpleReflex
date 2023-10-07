@@ -1,0 +1,11 @@
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\bin\Debug\Geagonia_Simple Reflex Agent.exe.config
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\bin\Debug\Geagonia_Simple Reflex Agent.exe
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\bin\Debug\Geagonia_Simple Reflex Agent.pdb
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.AssemblyReference.cache
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.SuggestedBindingRedirects.cache
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple_Reflex_Agent.Form1.resources
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple_Reflex_Agent.Properties.Resources.resources
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.GenerateResource.cache
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.CoreCompileInputs.cache
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.exe
+F:\SCHOOL\2023-2024\CS323\Geagonia_Simple Reflex Agent\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.pdb
