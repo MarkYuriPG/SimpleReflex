@@ -33,9 +33,7 @@ namespace Geagonia_Simple_Reflex_Agent
         {
             Graphics g = e.Graphics;
             Pen myPen = new Pen(Color.Black);
-            Pen redPen = new Pen(Color.Red);
             Brush labelBrush = new SolidBrush(Color.Black);
-            Brush myBrush = new SolidBrush(Color.DarkGray);
             Brush greenBrush = new SolidBrush(Color.Green);
             Brush redBrush = new SolidBrush(Color.Red);
 
@@ -58,10 +56,8 @@ namespace Geagonia_Simple_Reflex_Agent
   
             if(vacuumCleaner.NoOpTimer.Enabled)
                 g.FillEllipse(redBrush, vacuumCleaner.Position.X, vacuumCleaner.Position.Y, 100, 100);
-            //g.DrawEllipse(redPen, vacuumCleaner.currentRoom.roomPoint.X, vacuumCleaner.currentRoom.roomPoint.Y, 100, 100);
             else
                 g.FillEllipse(greenBrush, vacuumCleaner.Position.X, vacuumCleaner.Position.Y, 100, 100);
-            // g.DrawEllipse(myPen, vacuumCleaner.currentRoom.roomPoint.X, vacuumCleaner.currentRoom.roomPoint.Y, 100, 100);
 
             for (int i = 0; i < rooms.Count; i++)
             {
@@ -71,98 +67,10 @@ namespace Geagonia_Simple_Reflex_Agent
             }
         }
 
-        Action act;
-        Room initialRoom;
-        private void ActTimer_Tick(object sender, EventArgs e)
-        {
-            if (Timer.Enabled)
-            {
-                return;
-            }
-            else
-            {
-                initialRoom = vacuumCleaner.currentRoom;
-                act = vacuumCleaner.Act(rooms);
-                Timer.Enabled = true;
-                Timer.Start();
-            }
-                
-        }
-
         // Original callback 
         private void Update(object sender, EventArgs e)
         {
             vacuumCleaner.Act(rooms);
-            // ActTimer.Stop();
-            // ActTimer.Enabled = false;
-
-            // switch (act)
-            // {
-            //     case Action.NoOp:
-            //         Timer.Stop();
-            //         Timer.Enabled = false;
-            //         ActTimer.Enabled = false;
-            //         ActTimer.Start();
-            //         break;
-            //     case Action.Left:
-            //         if (initialRoom.roomPoint.X > vacuumCleaner.currentRoom.roomPoint.X)
-            //         {
-            //             vacuumCleaner.currentRoom.roomPoint.X -= 10;
-            //         }
-            //         else
-            //         {
-            //             Timer.Stop();
-            //             Timer.Enabled = false;
-            //             ActTimer.Enabled = false;
-            //             ActTimer.Start();
-            //         }
-            //         break;
-            //     case Action.Right:
-            //         if (initialRoom.roomPoint.X < vacuumCleaner.currentRoom.roomPoint.X)
-            //         {
-            //             vacuumCleaner.currentRoom.roomPoint.X += 10;
-            //         }
-            //         else
-            //         {
-            //             Timer.Stop();
-            //             Timer.Enabled = false;
-            //             ActTimer.Enabled = false;
-            //             ActTimer.Start();
-            //         }
-            //         break;
-            //     case Action.Down:
-            //         if (initialRoom.roomPoint.Y < vacuumCleaner.currentRoom.roomPoint.Y)
-            //         {
-            //             vacuumCleaner.currentRoom.roomPoint.Y += 10;
-            //         }
-            //         else
-            //         {
-            //             Timer.Stop();
-            //             Timer.Enabled = false;
-            //             ActTimer.Enabled = false;
-            //             ActTimer.Start();
-            //         }
-            //         break;
-            //     case Action.Up:
-            //         if (initialRoom.roomPoint.Y > vacuumCleaner.currentRoom.roomPoint.Y)
-            //         {
-            //             vacuumCleaner.currentRoom.roomPoint.Y -= 10;
-            //         }
-            //         else
-            //         {
-            //             Timer.Stop();
-            //             Timer.Enabled = false;
-            //             ActTimer.Enabled = false;
-            //             ActTimer.Start();
-            //         }
-            //         break;
-            //     case Action.Clean:
-            //         Timer.Stop();
-            //         Timer.Enabled = false;
-            //         ActTimer.Enabled = false;
-            //         ActTimer.Start();
-            //         break;
-            // }
             this.Refresh();
         }
 
@@ -221,44 +129,6 @@ namespace Geagonia_Simple_Reflex_Agent
             randomNumber = new Random().Next(0, 4);
             vacuumCleaner = new VacuumCleaner(rooms, rooms[randomNumber]);
         }
-
-
-
-        //private void Animate(VacuumCleaner vacuumCleaner)
-        //{
-        //    Room initialRoom = vacuumCleaner.currentRoom;
-        //    switch (vacuumCleaner.Act(rooms))
-        //    {
-        //        case Action.NoOp:
-        //            break;
-        //        case Action.Left:
-        //            if(initialRoom.roomPoint.X != vacuumCleaner.currentRoom.roomPoint.X)
-        //            {
-        //                vacuumCleaner.currentRoom.roomPoint.X -= 10;
-        //            }
-        //            break;
-        //        case Action.Right:
-        //            if (initialRoom.roomPoint.X != vacuumCleaner.currentRoom.roomPoint.X)
-        //            {
-        //                vacuumCleaner.currentRoom.roomPoint.X += 10;
-        //            }
-        //            break;
-        //        case Action.Down:
-        //            if (initialRoom.roomPoint.Y != vacuumCleaner.currentRoom.roomPoint.Y)
-        //            {
-        //                vacuumCleaner.currentRoom.roomPoint.Y += 10;
-        //            }
-        //            break;
-        //        case Action.Up:
-        //            if (initialRoom.roomPoint.Y != vacuumCleaner.currentRoom.roomPoint.Y)
-        //            {
-        //                vacuumCleaner.currentRoom.roomPoint.Y -= 10;
-        //            }
-        //            break;
-        //        case Action.Clean:
-        //            break;
-        //    }
-        //}
     }
     
 }

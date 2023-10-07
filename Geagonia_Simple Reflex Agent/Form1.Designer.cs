@@ -31,13 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.ActTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Timer
             // 
             this.Timer.Enabled = true;
-            this.Timer.Interval = 60;
+            this.Timer.Interval = 8;
             this.Timer.Tick += new System.EventHandler(this.Update);
             // 
             // dateTimePicker1
@@ -47,17 +46,13 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 0;
             // 
-            // ActTimer
-            // 
-            this.ActTimer.Interval = 1000;
-            this.ActTimer.Tick += new System.EventHandler(this.ActTimer_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dateTimePicker1);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
@@ -69,7 +64,6 @@
         #endregion
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Timer ActTimer;
     }
 }
 

@@ -33,17 +33,17 @@ namespace Geagonia_Simple_Reflex_Agent
             this.rooms = rooms;
 
             NoOpTimer = new Timer();
-            NoOpTimer.Interval = 60;
+            NoOpTimer.Interval = 100;
             NoOpTimer.Tick += AnimateSleep;
             NoOpTimer.Enabled = false;
 
             MoveTimer = new Timer();
-            MoveTimer.Interval = 60;
+            MoveTimer.Interval = 100;
             MoveTimer.Tick += AnimateMove;
             MoveTimer.Enabled = false;
 
             CleanTimer = new Timer();
-            CleanTimer.Interval = 60;
+            CleanTimer.Interval = 100;
             CleanTimer.Tick += AnimateClean;
             CleanTimer.Enabled = false;
         }
@@ -77,44 +77,6 @@ namespace Geagonia_Simple_Reflex_Agent
 				}
             }
 
-            //if (MoveTimer.Enabled)
-            //{
-
-            //    // run move animation
-                
-            //}
-            //else if (CleanTimer.Enabled)
-            //{
-            //    // run clean animation 
-            //}
-            //else if (NoOpTimer.Enabled)
-            //{
-            //    // run sleep animation
-            //    // NoOp();
-            //}
-
-            // if(NoOpTimer.Enabled)
-            // {
-            //     //Sleeping Animation
-            //     return NoOp();
-            // }
-     
-            // if (currentRoom.roomState == State.Dirty)
-            // {
-            //     //Start Clean Animation
-            //     CurrentAction = Clean();
-            //     return CurrentAction;
-            // }
-            // else if (currentRoom.roomState == State.Clean)
-            // {
-            //     //Start Move Animation
-            //     //time = 0;
-            //     //MoveTimer.Start();
-            //     //CurrentAction = Move(rooms, random.Next(0, 22));
-            //     //return CurrentAction;
-            //     return Move(rooms, random.Next(0, 22));
-            // }
-
             return Action.NoOp;
         }
 
@@ -143,26 +105,6 @@ namespace Geagonia_Simple_Reflex_Agent
                 Console.WriteLine("START SLEEP");
                 return Action.NoOp;
             }
-            //switch (randomNumber)
-            //{
-            //    case 0:
-            //        GoLeft(rooms);
-            //        break;
-            //    case 1:
-            //        GoUp(rooms);
-            //        break;
-            //    case 2:
-            //        GoRight(rooms);
-            //        break;
-            //    case 3:
-            //        GoDown(rooms);
-            //        break;
-            //    case 4:
-            //        time = 0;
-            //        NoOpTimer.Start();
-            //        Console.WriteLine("START SLEEP");
-            //        break;
-            //}
             return Action.NoOp;
         }
 
@@ -211,64 +153,6 @@ namespace Geagonia_Simple_Reflex_Agent
             return Action.Clean;
         }
 
-        //private void CallBack(object o, EventArgs e)
-        //{
-        //    time++;
-        //    if(time == 2)
-        //    {
-        //        NoOpTimer.Stop();
-        //        NoOpTimer.Enabled = false;
-        //        Console.WriteLine("END SLEEP");
-        //    }
-        //}
-
-        //private void MoveCallBack(object o, EventArgs e)
-        //{
-        //    time++;
-        //    if(time == 10)
-        //    {
-        //        MoveTimer.Stop();
-        //        MoveTimer.Enabled = false;
-        //    }
-
-        //    //int distance;
-
-        //    //switch (CurrentAction)
-        //    //{
-        //    //    case Action.NoOp:
-        //    //        break;
-        //    //    case Action.Left:
-        //    //            distance = rooms[1].roomPoint.X - rooms[0].roomPoint.X;
-        //    //            Position.X -= (int)(distance*0.1f);
-        //    //            Console.WriteLine("Going Left");
-        //    //        break;
-        //    //    case Action.Right:
-        //    //            Position.X += MoveSpeed;
-        //    //            Console.WriteLine("Going Right");
-        //    //        break;
-        //    //    case Action.Down:
-        //    //            Position.Y += MoveSpeed;
-        //    //            Console.WriteLine("Going Down");
-        //    //        break;
-        //    //    case Action.Up:
-        //    //            Position.Y -= MoveSpeed;
-        //    //            Console.WriteLine("Going Up");
-        //    //        break;
-        //    //    case Action.Clean:
-        //    //            Console.WriteLine("CLEANING");
-        //    //        break;
-        //    //}
-        //}
-
-        private Action NoOp()
-        {
-           // Console.WriteLine("SLEEPING");
-           return Action.NoOp;
-        }
-
-        // HANS
-        //=========================================================
-
         // Clean ---------------------------------
         private void StartClean()
         {
@@ -279,7 +163,7 @@ namespace Geagonia_Simple_Reflex_Agent
         private void AnimateClean(object sender, EventArgs e)
         {
             time++;
-            if (time == 3)
+            if (time == 4)
             {
                 CleanTimer.Stop();
                 CleanTimer.Enabled = false;
@@ -303,7 +187,7 @@ namespace Geagonia_Simple_Reflex_Agent
         private void AnimateSleep(object o, EventArgs a)
         {
             time++;
-            if (time == 3)
+            if (time == 8)
             {
                 NoOpTimer.Stop();
                 NoOpTimer.Enabled = false;
@@ -322,8 +206,6 @@ namespace Geagonia_Simple_Reflex_Agent
             time = 0;
             MoveTimer.Start();
             MoveTimer.Enabled = true;
-
-            
 
             if (currentRoom.roomName == Location.A)
             {

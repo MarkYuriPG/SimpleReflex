@@ -25,7 +25,7 @@ namespace Geagonia_Simple_Reflex_Agent
         public Room(Location location)
         {
             DirtTimer = new Timer();
-            DirtTimer.Interval = 1000;
+            DirtTimer.Interval = 100;
             DirtTimer.Tick += CallBack;
             roomName = location;
         }
@@ -35,7 +35,7 @@ namespace Geagonia_Simple_Reflex_Agent
             if(roomState == State.Clean)
                 time++;
 
-            if(time == 7)
+            if(time == 80)
             {
                 DirtTimer.Stop();
                 roomState = State.Dirty;
