@@ -102,11 +102,7 @@ namespace Geagonia_Simple_Reflex_Agent
                 CleanTimer.Stop();
                 CleanTimer.Enabled = false;
                 Clean();
-                Console.WriteLine("Stop cleaning");
             }
-
-            // TODO: ANIMATE CLEAN HERE
-            Console.WriteLine("CLEANING");
         }
 
         // Sleep ---------------------------------
@@ -130,10 +126,7 @@ namespace Geagonia_Simple_Reflex_Agent
             {
                 NoOpTimer.Stop();
                 NoOpTimer.Enabled = false;
-                Console.WriteLine("Stop Sleeping");
             }
-            // TODO: ANIMATE SLEEP HERE
-            Console.WriteLine("SLEEPING");
         }
 
         // Move ---------------------------------
@@ -210,7 +203,6 @@ namespace Geagonia_Simple_Reflex_Agent
             {
                 MoveTimer.Stop();
                 MoveTimer.Enabled = false;
-                Console.WriteLine("Stop Move");
             }
 
             double movementFactor = 0.05;
@@ -237,28 +229,24 @@ namespace Geagonia_Simple_Reflex_Agent
         {
             int distance = rooms[2].roomPoint.Y - rooms[0].roomPoint.Y;
             Position = new Point(Position.X, Position.Y + (int)(distance * movementFactor));
-            Console.WriteLine("Down");
         }
 
         private void AnimateUp(double movementFactor)
         {
             int distance = rooms[2].roomPoint.Y - rooms[0].roomPoint.Y;
             Position = new Point(Position.X, Position.Y - (int) (distance * movementFactor));
-            Console.WriteLine("Up");
         }
 
         private void AnimateRight(double movementFactor)
         {
             int distance = rooms[1].roomPoint.X - rooms[0].roomPoint.X;
             Position = new Point(Position.X + (int)(distance * movementFactor), Position.Y);
-            Console.WriteLine("Right");
         }
 
         private void AnimateLeft(double movementFactor)
         {
             int distance = rooms[1].roomPoint.X - rooms[0].roomPoint.X;
             Position = new Point(Position.X - (int)(distance * movementFactor), Position.Y);
-            Console.WriteLine("Left");
         }
 
     }
