@@ -36,6 +36,7 @@ namespace Geagonia_Simple_Reflex_Agent
             Brush labelBrush = new SolidBrush(Color.Black);
             Brush greenBrush = new SolidBrush(Color.Green);
             Brush redBrush = new SolidBrush(Color.Red);
+            Brush brownBrush = new SolidBrush(Color.RosyBrown);
 
             centerX = this.ClientSize.Width / 2;
             centerY = this.ClientSize.Height / 2;
@@ -53,11 +54,20 @@ namespace Geagonia_Simple_Reflex_Agent
                     this.ClientSize.Height - this.ClientSize.Height / 4);
             roomPoints[3] = new Point(this.ClientSize.Width - this.ClientSize.Width / 4,
                     this.ClientSize.Height - this.ClientSize.Height / 4);
-  
-            if(vacuumCleaner.NoOpTimer.Enabled)
-                g.FillEllipse(redBrush, vacuumCleaner.Position.X, vacuumCleaner.Position.Y, 100, 100);
+
+            foreach (Room room in rooms)
+            {
+                if (room.roomState == State.Dirty)
+                {
+                    g.FillRectangle(brownBrush, room.roomPoint.X-100, room.roomPoint.Y-90, 
+                        200, 200);
+                }
+            }
+
+            if (vacuumCleaner.NoOpTimer.Enabled)
+                g.FillEllipse(redBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
             else
-                g.FillEllipse(greenBrush, vacuumCleaner.Position.X, vacuumCleaner.Position.Y, 100, 100);
+                g.FillEllipse(greenBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
 
             for (int i = 0; i < rooms.Count; i++)
             {
@@ -70,7 +80,7 @@ namespace Geagonia_Simple_Reflex_Agent
         // Original callback 
         private void Update(object sender, EventArgs e)
         {
-            vacuumCleaner.Act(rooms);
+            label2.Text = vacuumCleaner.Act(rooms).ToString();
             this.Refresh();
         }
 

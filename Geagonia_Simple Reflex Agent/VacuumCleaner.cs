@@ -25,7 +25,6 @@ namespace Geagonia_Simple_Reflex_Agent
         public int MoveSpeed = 10;
         int time = 0;
 
-
         public VacuumCleaner(List<Room> rooms,Room currentRoom) 
         {
             this.currentRoom = currentRoom;
@@ -33,17 +32,17 @@ namespace Geagonia_Simple_Reflex_Agent
             this.rooms = rooms;
 
             NoOpTimer = new Timer();
-            NoOpTimer.Interval = 100;
+            NoOpTimer.Interval = 20;
             NoOpTimer.Tick += AnimateSleep;
             NoOpTimer.Enabled = false;
 
             MoveTimer = new Timer();
-            MoveTimer.Interval = 100;
+            MoveTimer.Interval = 20;
             MoveTimer.Tick += AnimateMove;
             MoveTimer.Enabled = false;
 
             CleanTimer = new Timer();
-            CleanTimer.Interval = 100;
+            CleanTimer.Interval = 20;
             CleanTimer.Tick += AnimateClean;
             CleanTimer.Enabled = false;
         }
@@ -52,10 +51,6 @@ namespace Geagonia_Simple_Reflex_Agent
 
         public Action Act(List<Room> rooms)
         {
-            // Phase 1 choose what act to start first
-            // Phase 2 then run/animate the chosen act
-
-            // Phase 1
             bool hasTimerEnabled =  MoveTimer.Enabled || 
                                     NoOpTimer.Enabled || 
                                     CleanTimer.Enabled;
@@ -67,9 +62,8 @@ namespace Geagonia_Simple_Reflex_Agent
 				}
 				else if (currentRoom.roomState == State.Clean)
 				{
-					if(random.Next(0, 2) == 0)
+					if(random.Next(0, 10) <= 6)
                     {
-                        
 						StartMove();
                     }
 					else
@@ -77,71 +71,7 @@ namespace Geagonia_Simple_Reflex_Agent
 				}
             }
 
-            return Action.NoOp;
-        }
-
-        public Action Move(List<Room> rooms, int randomNumber)
-        {
-            if(randomNumber >= 0 && randomNumber <= 5)
-            {
-                return GoLeft(rooms);
-            }
-            else if(randomNumber >= 6 && randomNumber <= 10)
-            {
-                return GoUp(rooms);
-            }
-            else if (randomNumber >= 11 && randomNumber <= 15)
-            {
-                return GoRight(rooms);
-            }
-            else if (randomNumber >= 16 && randomNumber <= 20)
-            {
-                return GoDown(rooms);
-            }
-            else if (randomNumber == 21)
-            {
-                time = 0;
-                NoOpTimer.Start();
-                Console.WriteLine("START SLEEP");
-                return Action.NoOp;
-            }
-            return Action.NoOp;
-        }
-
-        private Action GoUp(List<Room> rooms)
-        {
-            if (currentRoom == rooms[(int)Location.C])
-                currentRoom = rooms[(int)Location.A];
-            else if (currentRoom == rooms[(int)Location.D])
-                currentRoom = rooms[(int)Location.B];
-            return Action.Up;
-        }
-
-        private Action GoLeft(List<Room> rooms)
-        {
-            if (currentRoom == rooms[(int)Location.B])
-                currentRoom = rooms[(int)Location.A];
-            else if (currentRoom == rooms[(int)Location.D])
-                currentRoom = rooms[(int)Location.C];
-            return Action.Left;
-        }
-
-        private Action GoDown(List<Room> rooms)
-        {
-            if (currentRoom == rooms[(int)Location.A])
-                currentRoom = rooms[(int)Location.C];
-            else if (currentRoom == rooms[(int)Location.B])
-                currentRoom = rooms[(int)Location.D];
-            return Action.Down;
-        }
-
-        private Action GoRight(List<Room> rooms)
-        {
-            if (currentRoom == rooms[(int)Location.A])
-                currentRoom = rooms[(int)Location.B];
-            else if (currentRoom == rooms[(int)Location.C])
-                currentRoom = rooms[(int)Location.D];
-            return Action.Right;
+            return CurrentAction;
         }
 
         private Action Clean()
@@ -154,40 +84,49 @@ namespace Geagonia_Simple_Reflex_Agent
         }
 
         // Clean ---------------------------------
-        private void StartClean()
+        private Action StartClean()
         {
             time = 0;
             CleanTimer.Start();
             CleanTimer.Enabled = true;
+            CurrentAction = Action.Clean;
+
+            return CurrentAction;
         }
+
         private void AnimateClean(object sender, EventArgs e)
         {
             time++;
-            if (time == 4)
+            if (time >= 10)
             {
                 CleanTimer.Stop();
                 CleanTimer.Enabled = false;
                 Clean();
                 Console.WriteLine("Stop cleaning");
             }
+
             // TODO: ANIMATE CLEAN HERE
             Console.WriteLine("CLEANING");
         }
 
         // Sleep ---------------------------------
         // starter for NoOpTimer 
-        private void StartNoOp()
+        private Action StartNoOp()
         {
             time = 0;
             NoOpTimer.Start();
             NoOpTimer.Enabled = true;
+            CurrentAction = Action.NoOp;
+
+            return CurrentAction;
         }
 
         // callback for NoOpTimer
         private void AnimateSleep(object o, EventArgs a)
         {
             time++;
-            if (time == 8)
+
+            if (time == 30)
             {
                 NoOpTimer.Stop();
                 NoOpTimer.Enabled = false;
@@ -199,7 +138,7 @@ namespace Geagonia_Simple_Reflex_Agent
 
         // Move ---------------------------------
         // starter for MoveTimer
-        private void StartMove()
+        private Action StartMove()
         {
             // choose direction
 
@@ -259,62 +198,66 @@ namespace Geagonia_Simple_Reflex_Agent
                     currentRoom = rooms[(int)Location.C];
                 }
             }
+
+            return CurrentAction;
         }
 
         // callback for MoveTimer
         private void AnimateMove(object sender, EventArgs e)
         {
             time++;
-            if (time == 10)
+            if (time == 20)
             {
                 MoveTimer.Stop();
                 MoveTimer.Enabled = false;
                 Console.WriteLine("Stop Move");
             }
 
+            double movementFactor = 0.05;
+
             if (CurrentAction == Action.Left)
             {
-                AnimateLeft();
+                AnimateLeft(movementFactor);
             }
             else if (CurrentAction == Action.Right)
             {
-                AnimateRight();
+                AnimateRight(movementFactor);
             }
             else if (CurrentAction == Action.Down)
             {
-                AnimateDown();
+                AnimateDown(movementFactor);
             }
             else if (CurrentAction == Action.Up)
             {
-                AnimateUp();
+                AnimateUp(movementFactor);
             }
         }
 
-        private void AnimateDown()
+        private void AnimateDown(double movementFactor)
         {
             int distance = rooms[2].roomPoint.Y - rooms[0].roomPoint.Y;
-            Position = new Point(Position.X, Position.Y + (int)(distance * 0.1));
+            Position = new Point(Position.X, Position.Y + (int)(distance * movementFactor));
             Console.WriteLine("Down");
         }
 
-        private void AnimateUp()
+        private void AnimateUp(double movementFactor)
         {
             int distance = rooms[2].roomPoint.Y - rooms[0].roomPoint.Y;
-            Position = new Point(Position.X, Position.Y - (int) (distance * 0.1));
+            Position = new Point(Position.X, Position.Y - (int) (distance * movementFactor));
             Console.WriteLine("Up");
         }
 
-        private void AnimateRight()
+        private void AnimateRight(double movementFactor)
         {
             int distance = rooms[1].roomPoint.X - rooms[0].roomPoint.X;
-            Position = new Point(Position.X + (int)(distance * 0.1), Position.Y);
+            Position = new Point(Position.X + (int)(distance * movementFactor), Position.Y);
             Console.WriteLine("Right");
         }
 
-        private void AnimateLeft()
+        private void AnimateLeft(double movementFactor)
         {
             int distance = rooms[1].roomPoint.X - rooms[0].roomPoint.X;
-            Position = new Point(Position.X - (int)(distance * 0.1), Position.Y);
+            Position = new Point(Position.X - (int)(distance * movementFactor), Position.Y);
             Console.WriteLine("Left");
         }
 
