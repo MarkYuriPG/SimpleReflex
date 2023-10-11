@@ -59,8 +59,8 @@ namespace Geagonia_Simple_Reflex_Agent
             {
                 if (room.roomState == State.Dirty)
                 {
-                    g.FillRectangle(brownBrush, room.roomPoint.X-100, room.roomPoint.Y-90, 
-                        200, 200);
+                    g.FillRectangle(brownBrush, room.roomPoint.X-75, room.roomPoint.Y-75, 
+                        150, 150);
                 }
             }
 
@@ -75,6 +75,8 @@ namespace Geagonia_Simple_Reflex_Agent
                 g.DrawString(rooms[i].roomName + "\n" + rooms[i].roomState,
                     font, labelBrush, rooms[i].roomPoint);
             }
+
+            label4.Text = "Room " + vacuumCleaner.currentRoom.ToString();
         }
 
         // Original callback 

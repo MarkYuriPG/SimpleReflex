@@ -41,5 +41,10 @@ namespace Geagonia_Simple_Reflex_Agent
                 roomState = State.Dirty;
             }
         }
+
+        public override string ToString()
+        {
+            return roomName.ToString();
+        }
     }
 }
