@@ -37,6 +37,7 @@ namespace Geagonia_Simple_Reflex_Agent
             Brush greenBrush = new SolidBrush(Color.Green);
             Brush redBrush = new SolidBrush(Color.Red);
             Brush brownBrush = new SolidBrush(Color.RosyBrown);
+            Brush yellowBrush = new SolidBrush(Color.Yellow);
 
             centerX = this.ClientSize.Width / 2;
             centerY = this.ClientSize.Height / 2;
@@ -66,6 +67,8 @@ namespace Geagonia_Simple_Reflex_Agent
 
             if (vacuumCleaner.NoOpTimer.Enabled)
                 g.FillEllipse(redBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
+            else if(vacuumCleaner.CleanTimer.Enabled)
+                g.FillEllipse(yellowBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
             else
                 g.FillEllipse(greenBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
 
