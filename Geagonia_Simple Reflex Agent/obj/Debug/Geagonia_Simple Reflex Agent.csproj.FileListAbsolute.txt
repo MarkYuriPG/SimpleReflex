@@ -20,3 +20,14 @@ C:\Users\Mark\Desktop\desktop\school\cs345\simple reflex agent - vacuum cleaner\
 C:\Users\Mark\Desktop\desktop\school\cs345\simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.CoreCompileInputs.cache
 C:\Users\Mark\Desktop\desktop\school\cs345\simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.exe
 C:\Users\Mark\Desktop\desktop\school\cs345\simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.pdb
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\bin\Debug\Geagonia_Simple Reflex Agent.exe.config
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\bin\Debug\Geagonia_Simple Reflex Agent.exe
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\bin\Debug\Geagonia_Simple Reflex Agent.pdb
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.AssemblyReference.cache
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.SuggestedBindingRedirects.cache
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple_Reflex_Agent.Form1.resources
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple_Reflex_Agent.Properties.Resources.resources
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.GenerateResource.cache
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.csproj.CoreCompileInputs.cache
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.exe
+C:\Users\Mark\Desktop\desktop\school\cs345\Geagonia_simple reflex agent - vacuum cleaner\SimpleReflex\Geagonia_Simple Reflex Agent\obj\Debug\Geagonia_Simple Reflex Agent.pdb

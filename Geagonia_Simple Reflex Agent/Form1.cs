@@ -34,10 +34,8 @@ namespace Geagonia_Simple_Reflex_Agent
             Graphics g = e.Graphics;
             Pen myPen = new Pen(Color.Black);
             Brush labelBrush = new SolidBrush(Color.Black);
-            Brush greenBrush = new SolidBrush(Color.Green);
-            Brush redBrush = new SolidBrush(Color.Red);
-            Brush brownBrush = new SolidBrush(Color.RosyBrown);
-            Brush yellowBrush = new SolidBrush(Color.Yellow);
+            Brush dirtyBrush = new SolidBrush(Color.RosyBrown);
+            SolidBrush vacuumBrush = new SolidBrush(Color.Green);
 
             centerX = this.ClientSize.Width / 2;
             centerY = this.ClientSize.Height / 2;
@@ -60,17 +58,19 @@ namespace Geagonia_Simple_Reflex_Agent
             {
                 if (room.roomState == State.Dirty)
                 {
-                    g.FillRectangle(brownBrush, room.roomPoint.X-75, room.roomPoint.Y-75, 
+                    g.FillRectangle(dirtyBrush, room.roomPoint.X-75, room.roomPoint.Y-75, 
                         150, 150);
                 }
             }
 
             if (vacuumCleaner.NoOpTimer.Enabled)
-                g.FillEllipse(redBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
-            else if(vacuumCleaner.CleanTimer.Enabled)
-                g.FillEllipse(yellowBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
+                vacuumBrush.Color = Color.Red;
+            else if (vacuumCleaner.CleanTimer.Enabled)
+                vacuumBrush.Color = Color.Yellow;
             else
-                g.FillEllipse(greenBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
+                vacuumBrush.Color = Color.Green;
+
+            g.FillEllipse(vacuumBrush, vacuumCleaner.Position.X - 50, vacuumCleaner.Position.Y - 50, 100, 100);
 
             for (int i = 0; i < rooms.Count; i++)
             {
